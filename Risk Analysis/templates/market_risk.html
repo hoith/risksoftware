@@ -1,0 +1,35 @@
+{% extends "dashboard.html" %}
+
+{% block content %}
+<h2>Market Risk</h2>
+
+{% if error %}
+    <p style="color: red;">{{ error }}</p>
+{% endif %}
+
+{% if var %}
+    <p>Value-at-Risk ({{ confidence_level * 100 }}% confidence): {{ var }}</p>
+{% endif %}
+
+<form method="POST">
+    <p>Calculation Method:</p>
+    <input type="radio" id="parametric" name="method" value="parametric" checked>
+    <label for="parametric">Parametric</label><br>
+    <input type="radio" id="historical" name="method" value="historical">
+    <label for="historical">Historical</label><br><br>
+
+    <p>Parametric Distribution (if applicable):</p>
+    <select name="distribution" id="distribution">
+        <option value="normal">Normal</option>
+        <option value="t">t-distribution</option>
+    </select><br><br>
+
+    <label for="asset_prices">Asset Prices (comma-separated):</label><br>
+    <textarea name="asset_prices" id="asset_prices" rows="4" cols="50"></textarea><br><br>
+
+    <label for="confidence_level">Confidence Level (e.g., 0.95):</label>
+    <input type="text" name="confidence_level" id="confidence_level" value="0.95"><br><br>
+
+    <input type="submit" value="Calculate VaR">
+</form>
+{% endblock %}

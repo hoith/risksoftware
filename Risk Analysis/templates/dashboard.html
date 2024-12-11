@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Risk Management Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, {{ username }}!</h1>
+
+    <ul>
+        <li><a href="/market_risk">Market Risk</a></li>
+        <li><a href="/credit_risk">Credit Risk</a></li>
+        <li><a href="/operational_risk">Operational Risk</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

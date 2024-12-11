@@ -1,0 +1,26 @@
+{% extends "dashboard.html" %}
+
+{% block content %}
+<h2>Credit Risk</h2>
+
+{% if error %}
+    <p style="color: red;">{{ error }}</p>
+{% endif %}
+
+{% if el %}
+    <p>Expected Loss: {{ el }}</p>
+{% endif %}
+
+<form method="POST">
+    <label for="pd">Probability of Default (PD):</label>
+    <input type="text" name="pd" id="pd" required><br><br>
+
+    <label for="lgd">Loss Given Default (LGD):</label>
+    <input type="text" name="lgd" id="lgd" required><br><br>
+
+    <label for="ead">Exposure at Default (EAD):</label>
+    <input type="text" name="ead" id="ead" required><br><br>
+
+    <input type="submit" value="Calculate EL">
+</form>
+{% endblock %}
